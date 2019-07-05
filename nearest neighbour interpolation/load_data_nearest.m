@@ -39,8 +39,7 @@ for i=1:length(img)+1
                     axis([0,max(size(img{1,i},2),dim1),0,max(size(img{1,i},1),dim2)]);
                     axis on;
                     subplot(122);
-                    output = bil_interp(img{1,i}, dim2, dim1);
-                    %imwrite(output, strcat('E:\Image-Resizing\Image-Resizing-master\bilinear interpolation\output images\',imgname{1,i}))
+                    output = nearest_np(img{1,i}, dim2, dim1);
                     imshow(output,[]);
                     title(strcat('After interpolation ',imgname{1,i}));
                     axis([0,max(size(img{1,i},2),dim1),0,max(size(img{1,i},1),dim2)]);
