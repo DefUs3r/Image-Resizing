@@ -15,6 +15,8 @@ for itr = files'
 end
 cd '/home/soumyasis/Work/img resize/bilinear interpolation'
 %% Show image and perform Nearest neighbour Interpolation
+dim1 = input('Enter dimension 1 = ');
+dim2 = input('Enter dimension 2 = ');
 for i=1:length(img)+1
     w = waitforbuttonpress;
     if i== length(img)+1
@@ -34,13 +36,13 @@ for i=1:length(img)+1
                     subplot(121);
                     imshow(img{1,i},[]);
                     title(strcat('Before interpolation ',imgname{1,i}));
-                    axis([0,max(size(img{1,i},2),768),0,max(size(img{1,i},1),1024)]);
+                    axis([0,max(size(img{1,i},2),dim1),0,max(size(img{1,i},1),dim2)]);
                     axis on;
                     subplot(122);
-                    output = bil_interp(img{1,i}, 1024, 768);
+                    output = bil_interp(img{1,i}, dim2, dim1);
                     imshow(output,[]);
                     title(strcat('After interpolation ',imgname{1,i}));
-                    axis([0,max(size(img{1,i},2),768),0,max(size(img{1,i},1),1024)]);
+                    axis([0,max(size(img{1,i},2),dim1),0,max(size(img{1,i},1),dim2)]);
                     axis on;
                 otherwise
                     disp('Press Esc to stop or Enter to continue')
